@@ -23,7 +23,7 @@
 #include <malloc.h>
 #include <string.h>
 
-const char *version = "0.1";
+const char *version = "0.2";
 
 class xor_analyze {
 	/* pass 2 */
