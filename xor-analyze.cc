@@ -16,7 +16,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.7 2000/09/19 14:07:39 marvin Exp $
+ * $Id: xor-analyze.cc,v 1.8 2000/12/11 12:59:42 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -262,7 +262,7 @@ void xor_analyze::coincidence(void)
 	}
 	free(cbuffer);
 	if (status || verbose) {
-		printf("\nKey length is probably %d (or a factor or it)\n",
+		printf("\nKey length is probably %d (or a factor of it)\n",
 		       maxvalkey);
 	}
 }
