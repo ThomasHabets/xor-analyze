@@ -1,6 +1,6 @@
 /*
  *  xor-analyze: XOR Cipher cryptanalysis program
- *  Copyright (C) 2000 Marvin (marvin@rootbusters.net)
+ *  Copyright (C) 2000-2002 Thomas Habets <thomas@habets.pp.se>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public
@@ -16,7 +16,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.10 2001/09/26 17:37:38 marvin Exp $
+ * $Id: xor-analyze.cc,v 1.11 2002/04/07 23:22:28 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -380,7 +380,7 @@ int main(int argc, char **argv)
                 }
         }
 	if (status) {
-		printf("xor-analyze version %s by marvin (marvin@rootbusters.net)\n",
+		printf("xor-analyze version %s by Thomas Habets <thomas@habets.pp.se>\n",
 		       version);
 	}
 
