@@ -1,3 +1,6 @@
+#
+# $Id: Makefile,v 1.2 2000/05/02 16:12:58 marvin Exp $
+#
 TARGETS=xor-enc xor-dec xor-analyze
 
 all: $(TARGETS)
