@@ -1,7 +1,6 @@
-/* -*- linux-c -*- */
 /*
  *  xor-enc: XOR Cipher
- *  Copyright (C) 2000   Marvin (marvin@nss.nu)
+ *  Copyright (C) 2000 Marvin (marvin@nss.nu)
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU Lesser General Public
@@ -17,7 +16,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-enc.c,v 1.2 2000/05/02 16:12:58 marvin Exp $
+ * $Id: xor-enc.c,v 1.3 2000/05/03 16:20:54 marvin Exp $
  */
 #include <stdio.h>
 
