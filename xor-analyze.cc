@@ -16,7 +16,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.9 2001/09/25 17:19:30 marvin Exp $
+ * $Id: xor-analyze.cc,v 1.10 2001/09/26 17:37:38 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,7 +31,7 @@ extern "C" {
 }
 #endif
 
-const char *version = "0.3";
+const char *version = "0.4";
 
 class xor_analyze {
 	/* pass 2 */
@@ -309,6 +309,7 @@ void usage(int err)
 	       "   -m <number>  Minimum key length (default: 1)\n"
 	       "   -M <number>  Maximum key length (default: 20)\n"
 	       "   -v           Increment verbosity level (default: 0)\n"
+	       "   -q           Quiet mode\n"
 	       "   -h           Show this help text\n"
 	       "   -k <number>  Set key length\n"
 	       "   -s <number>  Maximum size to load (default: 1000)\n"
@@ -340,7 +341,7 @@ int main(int argc, char **argv)
 		strictfreq = 1,
 		status = 1;
 	
-        while ((c = getopt(argc, argv, "vhm:M:k:s:alq")) != EOF) {
+        while ((c = getopt(argc, argv, "vhm:M:k:s:alqfn")) != EOF) {
                 switch (c) {
 		case 'q':
 			status = 0;
