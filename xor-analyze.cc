@@ -16,7 +16,7 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.11 2002/04/07 23:22:28 marvin Exp $
+ * $Id: xor-analyze.cc,v 1.12 2002/04/13 01:04:03 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,13 +27,14 @@
 
 #ifdef WIN32_CROSS
 extern "C" {
-#include "/home/thompa/src/fcrackzip-0.2.4/getopt.h"
+#include "getopt.h"
 }
 #endif
 
 const char *version = "0.4";
 
 class xor_analyze {
+private:
 	/* pass 2 */
 	unsigned int keylen;
 	float freq[256];

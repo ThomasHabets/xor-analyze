@@ -1,8 +1,8 @@
-$Id: README,v 1.6 2001/09/25 17:32:11 marvin Exp $
+$Id: README,v 1.7 2002/04/13 01:04:03 marvin Exp $
 
  XOR Cipher implementation and breaking
 
-    By Marvin (marvin@rootbusters.net)
+    By Thomas Habets <thomas@habets.pp.se>
 
 
 Introduction
@@ -14,7 +14,7 @@ It's been many years since I first implemented XOR encryption, and then it
 was just with an 8-bit key. Here's a variable key-length implementation and a
 program for breaking using a ciphertext-only attack (known/chosen
 plaintext/ciphertext is so trivial I broke them when I first implemented the
-8-bit version with them when I was eight years old).
+8-bit version when I was eight years old).
 This program was inspired by the excellent book 'Applied cryptography' by Bruce
 Schneier. ISBN 0-471-11709-9 or 0-471-12845-7. Buy it, read it. Love it.
 
@@ -29,7 +29,8 @@ number of zeroes (equal bytes) are counted. This is called counting
 coincidences. When the number of zeroes is high the shift value is potentially
 a multiple of the key length. The one that stands out most is checked with
 statistics (with a frequency table) to get the key. To check with statistics on
-all key-lengths in key-length interval (-m and -M) use the -a switch.
+all key-lengths in key-length interval (-m and -M) use the -a switch (with -v
+for one key per keylength).
 
 Compiling
 ---------
@@ -50,12 +51,13 @@ file.xor = output 'ciphertext' filename
 
 Decryption
 ----------
-Same as encryption
+Same as encryption.
 
 Cryptanalyzing (cracking/breaking)
 ----------------------------------
 './xor-analyze -h' will give you some help.
-All tests will work (are successfully cryptanalyzed) without parameters.
+All tests will work (are successfully cryptanalyzed) without any parameters
+except ciphertext and frequency table.
 
 Frequency table generation
 --------------------------
@@ -72,22 +74,46 @@ FAQ
 ---
 Q: The windows version doesn't work/needs file X/crashes the system.
 
-A: Here kid, here's a nickel. Go buy yourself a *real* OS.
+A: Here's a nickel kid, go buy yourself a *real* OS.
    If the windows version doesn't work, I won't be able to debug it myself.
    The windows version is created under Linux using a cross-compiler. And since
    I don't have windows, it's enough for me if it just compiles.
    I don't cate about the windows version.
+
    As someone once said: I can code the unix stuff for free, but if you want me
    to program in windows, you have to pay me.
 ---
 Q: Where can I find a compiled version (as in: "I run windows and can't code")
 
-A: ftp://ftp.nss.nu/pub/synscan/arping-0.3-BINARY.tar.gz
+A: ftp://ftp.habets.pp.se/pub/synscan/xor-analyze-*-BINARY.tar.gz
 ---
+Q: I can't seem to crack this file, I'm sending it to you as an attachment.
+   Will you take a look at it?
+
+A: Probably not. If you can't crack it with this program, it probably means
+   that I would have to spend quite a while trying. And unless you can give me
+   a sufficient reason to do so (like money or a favor or something) I don't
+   really feel like doing other peoples work.
+
+   And even if you offer money, I won't hessitate to report you to the proper
+   authorities if I suspect you are trying to get me involved in stolen or
+   otherwise dubious data.
+---
+
+Misc
+----
+I developed this program until it worked, and no longer. Looking at the code
+now I think it should be rewritten, and maybe I'll do that some day.
+
+If you send a patch that adds/fixes something, it'll probably be added, but
+suggestions and requests will most likely not be implemented (by me) before
+the rewrite.
+
+Maybe I'll do the rewrite during the summer of 2002. But then again, maybe not.
 
 License
 -------
 It's all GPL, see the LICENSE file.
 
--------------------------------------------------------------------------------
-Send questions/suggestions/patches/rants/money/sparcs to marvin@rootbusters.net
+------------------------------------------------------------------------------
+Send questions/suggestions/patches/rants/money/sparc64s to thomas@habets.pp.se
