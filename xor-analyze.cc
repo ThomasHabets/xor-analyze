@@ -16,12 +16,12 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.4 2000/05/03 16:20:54 marvin Exp $
+ * $Id: xor-analyze.cc,v 1.5 2000/08/29 14:52:23 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <getopt.h>
-#include <malloc.h>
+//#include <getopt.h>
+#include <stdlib.h>
 #include <string.h>
 
 const char *version = "0.2";
@@ -54,7 +54,6 @@ public:
 	xor_analyze(const unsigned char *b0, int l, float *fq, int v);
 };
 
-
 void xor_analyze::run2_allkeys(int keylen)
 {
 	float minpoints = 1024*1024;
@@ -73,7 +72,9 @@ void xor_analyze::run2_allkeys(int keylen)
 	}
 	for (c = kend; c >= kstart; c--) {
 		if (status && !verbose) {
-			printf("\rCalculating all keys between kstart and kend... %d / %d", (kend-kstart)-c+2, kend - kstart+1);
+			printf("\rCalculating all keys between kstart and "
+			       "kend... %d / %d", (kend-kstart)-c+2,
+			       kend - kstart+1);
 			fflush(stdout);
 		}
 		run2(c);
@@ -92,8 +93,9 @@ void xor_analyze::run2_allkeys(int keylen)
 			       c, totalpoints, plainkey);
 		}
 	}
-	if (status && !verbose)
+	if (status && !verbose) {
 		printf("\n");
+	}
 }
 
 void xor_analyze::redundancy(char *s, int t)
@@ -102,7 +104,7 @@ void xor_analyze::redundancy(char *s, int t)
 	char iseq;
 
 	for (c = t; c-1; c--) {
-		if (status && !verbose) {
+		if (status || verbose) {
 			printf("\rChecking redundancy...");
 			fflush(stdout);
 		}
@@ -117,14 +119,15 @@ void xor_analyze::redundancy(char *s, int t)
 		}
 		if (iseq) {
 			keylen = strlen(s)/c;
-			if (status)
+			if (status || verbose)
 				printf(" Key shortened by %d to length %d\n",
 				       c, keylen);
 			plainkey[strlen(s)/c] = 0;
 			return;
 		} else {
-			if (status && !verbose) {
-				printf(" %6.2f %%", 100*(float)(t-c+2)/(float)t);
+			if (status || verbose) {
+				printf(" %6.2f %%",
+				       100*(float)(t-c+2)/(float)t);
 				fflush(stdout);
 			}
 		}
@@ -150,8 +153,8 @@ void xor_analyze::run2(int kl = 0)
 	totalpoints = 0;
 	for (kc = 0; kc < keylen; kc++) {
 		if (status && !verbose) {
-			printf("\rFinding key based on byte frequency... %d / %d",
-		       kc+1, keylen);
+			printf("\rFinding key based on byte frequency... "
+			       "%d / %d", kc+1, keylen);
 			fflush(stdout);
 		}
 		memset(points, 0, sizeof(points));
@@ -214,6 +217,7 @@ xor_analyze::xor_analyze(const unsigned char *b0, int l, float *fq, int v = 0)
 	memcpy(freq, fq, sizeof(float)*256);
 	strictfreq = keyalphanum = 0;
 	status = 1;
+	maxval = 0;
 
 	if (!((buffer = (unsigned char*)malloc(len))
 	      && (key = (unsigned char*)malloc(len)))) {
@@ -243,9 +247,11 @@ void xor_analyze::coincidence(void)
 
 	end = (kend < len) ? kend : len;
 	for (ofs = kstart; ofs <= end; ofs++) {
-		printf("\rCounting coincidences... %d / %d",
-		       ofs-kstart+1, end-kstart+1);
-		fflush(stdout);
+		if (status || verbose) {
+			printf("\rCounting coincidences... %d / %d",
+			       ofs-kstart+1, end-kstart+1);
+			fflush(stdout);
+		}
 		for(i = 0; i < len; i++) {
 			cbuffer[i] = buffer[i] ^ buffer[(i + ofs) % len];
 		}
@@ -256,7 +262,10 @@ void xor_analyze::coincidence(void)
 		}
 	}
 	free(cbuffer);
-	printf("\nKey length is probably %d\n", maxvalkey);
+	if (status || verbose) {{
+		printf("\nKey length is probably %d (or a factor or it)\n",
+		       maxvalkey);
+	}
 }
 
 int xor_analyze::count_byte(const unsigned char *b, int l, char ch)
@@ -273,8 +282,7 @@ int xor_analyze::count_byte(const unsigned char *b, int l, char ch)
 void xor_analyze::print_results(FILE *stream)
 {
 	unsigned int i;
-	fprintf(stream,
-		"Key length  Coincidents       Bytes    Coincidents"
+	fprintf(stream,	"Key length  Coincidents       Bytes    Coincidents"
 		" (in percent)\n");
 	for (i = 0; i <= ((kend - kstart < len) ? kend-kstart : len-1); i++) {
 		fprintf(stream, "%10d %12d  / %8d =      %6.2f %%",
@@ -289,7 +297,8 @@ void xor_analyze::print_results(FILE *stream)
 
 void usage(int err)
 {
-	printf("usage: xor-analyze [ options ] <encrypted file> [ <frequency table> ]\n\n"
+	printf("usage: xor-analyze [ options ] <encrypted file> "
+	       "[ <frequency table> ]\n\n"
 	       "Frequency table is not needed if in length-only mode (-l)\n"
 	       "Options:\n"
 	       "   -m <number>  Minimum key length (default: 1)\n"
@@ -298,11 +307,13 @@ void usage(int err)
 	       "   -h           Show this help text\n"
 	       "   -k <number>  Set key length\n"
 	       "   -s <number>  Maximum size to load (default: 1000)\n"
-	       "   -a           Run statistict on all keylengths less than the -M value\n"
-	       "   -l           Only run first pass which finds password length\n"
+	       "   -a           Run statistict on all keylengths less than "
+	       "the -M value\n"
+	       "   -l           Only run first pass which finds password "
+	       "length\n"
 	       "   -f           Don't be strict about the frequency\n"
-	       "   -n           Enable all chars in key, not just alphanumeric\n");
-	
+	       "   -n           Enable all chars in key, not just alphanumeric"
+	       "\n");
 	exit(err);
 }
 
@@ -324,14 +335,13 @@ int main(int argc, char **argv)
 		strictfreq = 1,
 		status = 1;
 	
-
 	printf("xor-analyze version %s by marvin (marvin@nss.nu)\n", version);
-
 
         while ((c = getopt(argc, argv, "vhm:M:k:s:al")) != EOF) {
                 switch (c) {
                 case 'v':
                         verbose++;
+			status = 0;
                         break;
                 case 'h':
                         usage(0);
@@ -349,7 +359,7 @@ int main(int argc, char **argv)
 			break;
 		case 'a':
 			allkeys = 1;
-			status = 0;
+//			status = 0;
 			break;
 		case 'l':
 			lengthonly = 1;
@@ -408,7 +418,7 @@ int main(int argc, char **argv)
 	analyze = new xor_analyze(buffer, len, freq, verbose);
 	analyze->keyalphanum = keyalphanum;
 	analyze->strictfreq = strictfreq;
-	analyze->status = 0;
+	analyze->status = status;
 	if (!keylen) {
 		keylen = analyze->run(maxlen, kstart, kend);
 	}
@@ -421,10 +431,10 @@ int main(int argc, char **argv)
 
 	if (allkeys) {
                 analyze->run2_allkeys(keylen);
-		printf("Probable key: \"%s\"\n", analyze->truekey);
+		printf("\nProbable key: \"%s\"\n", analyze->truekey);
 	} else {
 		analyze->run2(keylen);
-		printf("Probable key: \"%s\"\n", analyze->plainkey);
+		printf("\nProbable key: \"%s\"\n", analyze->plainkey);
 	}
 
 	return 0;
