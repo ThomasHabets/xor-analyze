@@ -1,6 +1,6 @@
-$Id: README,v 1.3 2000/08/29 15:45:14 marvin Exp $
+$Id: README,v 1.4 2000/09/19 14:07:39 marvin Exp $
 
- XOR Cipher implementation and breaking 0.2
+ XOR Cipher implementation and breaking
 
     By Marvin (marvin@nss.nu)
 

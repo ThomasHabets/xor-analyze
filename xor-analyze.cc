@@ -16,15 +16,16 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.6 2000/08/29 15:35:57 marvin Exp $
+ * $Id: xor-analyze.cc,v 1.7 2000/09/19 14:07:39 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
-const char *version = "0.2";
+const char *version = "0.3";
 
 class xor_analyze {
 	/* pass 2 */
@@ -366,6 +367,7 @@ int main(int argc, char **argv)
 			break;
 		case 'n':
 			keyalphanum = 0;
+			break;
                 default:
                         usage(1);
                 }
