@@ -1,6 +1,6 @@
-$Id: README,v 1.2 2000/05/02 16:12:58 marvin Exp $
+$Id: README,v 1.3 2000/08/29 15:45:14 marvin Exp $
 
- XOR Cipher implementation and breaking 0.1
+ XOR Cipher implementation and breaking 0.2
 
     By Marvin (marvin@nss.nu)
 
@@ -9,12 +9,12 @@ Introduction
 ------------
 Every amateur cryptographer (that I've met) has at one point implemented some
 version of XOR encryption. Some thinking that it's completely secure, others
-did it just for fun. The truth is, of course, that it's pathetically unsecure.
+did it just for fun. The truth is, of course, that it's pathetically insecure.
 It's been many years since I first implemented XOR encryption, and then it
 was just with an 8-bit key. Here's a variable key-length implementation and a
 program for breaking using a ciphertext-only attack (known/chosen
 plaintext/ciphertext is so trivial I broke them when I first implemented the
-8-bit version with them when I was eight).
+8-bit version with them when I was eight years old).
 This program was inspired by the excellent book 'Applied cryptography' by Bruce
 Schneier. ISBN 0-471-11709-9 or 0-471-12845-7. Buy it, read it. Love it.
 
@@ -29,7 +29,7 @@ number of zeroes (equal bytes) are counted. This is called counting
 coincidences. When the number of zeroes is high the shift value is potentially
 a multiple of the key length. The one that stands out most is checked with
 statistics (with a frequency table) to get the key. To check with statistics on
-all key-lengths in key-length interval (-m and -M) use -a with xor-analyze.
+all key-lengths in key-length interval (-m and -M) use the -a switch.
 
 Compiling
 ---------

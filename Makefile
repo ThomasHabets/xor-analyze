@@ -1,9 +1,9 @@
 #
-# $Id: Makefile,v 1.3 2000/08/29 14:52:23 marvin Exp $
+# $Id: Makefile,v 1.4 2000/08/29 15:45:14 marvin Exp $
 #
 TARGETS=xor-enc xor-dec xor-analyze
 
-CXXFLAGS=-g
+CXXFLAGS=
 
 all: $(TARGETS)
 
