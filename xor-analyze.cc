@@ -1,22 +1,22 @@
 /*
  *  xor-analyze: XOR Cipher cryptanalysis program
- *  Copyright (C) 2000 Marvin (marvin@nss.nu)
+ *  Copyright (C) 2000 Marvin (marvin@rootbusters.net)
  *
  *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU Lesser General Public
+ *  modify it under the terms of the GNU General Public
  *  License as published by the Free Software Foundation; either
  *  version 2 of the License, or (at your option) any later version.
  *
  *  This library is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  Lesser General Public License for more details.
+ *  General Public License for more details.
  *
- *  You should have received a copy of the GNU Lesser General Public
+ *  You should have received a copy of the GNU General Public
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.8 2000/12/11 12:59:42 marvin Exp $
+ * $Id: xor-analyze.cc,v 1.9 2001/09/25 17:19:30 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,6 +24,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+
+#ifdef WIN32_CROSS
+extern "C" {
+#include "/home/thompa/src/fcrackzip-0.2.4/getopt.h"
+}
+#endif
 
 const char *version = "0.3";
 
@@ -373,7 +379,7 @@ int main(int argc, char **argv)
                 }
         }
 	if (status) {
-		printf("xor-analyze version %s by marvin (marvin@nss.nu)\n",
+		printf("xor-analyze version %s by marvin (marvin@rootbusters.net)\n",
 		       version);
 	}
 

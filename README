@@ -1,8 +1,8 @@
-$Id: README,v 1.4 2000/09/19 14:07:39 marvin Exp $
+$Id: README,v 1.5 2001/09/25 17:19:30 marvin Exp $
 
  XOR Cipher implementation and breaking
 
-    By Marvin (marvin@nss.nu)
+    By Marvin (marvin@rootbusters.net)
 
 
 Introduction
@@ -36,6 +36,9 @@ Compiling
 Type 'make'. Mail me if it doesn't compile with error messages and don't forget
 to tell me what kind of system you have.
 
+Type 'make win32' to cross compile. It works on my box, but probably not on
+yours. Edit the makefile adjust compiler and compiler options.
+
 Encryption
 ----------
 ./xor-enc secret file.txt file.xor
@@ -65,9 +68,21 @@ find /usr/src/linux -name "*.[ch]" | ./freq > freq/linux-2.2.14-int-m0.freq
 
 Note that this does *not* represent average C-code.
 
+FAQ
+---
+Q: The windows version doesn't work/needs file X/crashes the system.
+
+A: Here kid, here's a nickel. Go buy yourself a *real* OS.
+   If the windows version doesn't work, I won't be able to debug it myself.
+   The windows version is created under Linux using a cross-compiler. And since
+   I don't have windows, it's enough for me if it just compiles.
+   I don't cate about the windows version.
+   As someone once said: I can code the unix stuff for free, but if you want me
+   to program in windows, you have to pay me.
+
 License
 -------
 It's all GPL, see the LICENSE file.
 
 -------------------------------------------------------------------------------
-Send questions/suggestions/patches/rants/money/sparcs/whatever to marvin@nss.nu
+Send questions/suggestions/patches/rants/money/sparcs to marvin@rootbusters.net
