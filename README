@@ -1,4 +1,4 @@
-$Id: README,v 1.5 2001/09/25 17:19:30 marvin Exp $
+$Id: README,v 1.6 2001/09/25 17:32:11 marvin Exp $
 
  XOR Cipher implementation and breaking
 
@@ -79,6 +79,11 @@ A: Here kid, here's a nickel. Go buy yourself a *real* OS.
    I don't cate about the windows version.
    As someone once said: I can code the unix stuff for free, but if you want me
    to program in windows, you have to pay me.
+---
+Q: Where can I find a compiled version (as in: "I run windows and can't code")
+
+A: ftp://ftp.nss.nu/pub/synscan/arping-0.3-BINARY.tar.gz
+---
 
 License
 -------
