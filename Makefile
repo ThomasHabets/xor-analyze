@@ -1,5 +1,4 @@
-#
-# $Id: Makefile,v 1.6 2001/09/25 17:19:30 marvin Exp $
+# xor-analyze/Makefile
 #
 TARGETS=xor-enc xor-dec xor-analyze
 

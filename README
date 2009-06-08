@@ -1,8 +1,9 @@
-$Id: README,v 1.7 2002/04/13 01:04:03 marvin Exp $
+xor-analyze/README
 
  XOR Cipher implementation and breaking
 
     By Thomas Habets <thomas@habets.pp.se>
+    Written around 2000-2002
 
 
 Introduction
@@ -85,7 +86,7 @@ A: Here's a nickel kid, go buy yourself a *real* OS.
 ---
 Q: Where can I find a compiled version (as in: "I run windows and can't code")
 
-A: ftp://ftp.habets.pp.se/pub/synscan/xor-analyze-*-BINARY.tar.gz
+A: http://www.habets.pp.se/synscan/files/xor-analyze-*-BINARY.tar.gz
 ---
 Q: I can't seem to crack this file, I'm sending it to you as an attachment.
    Will you take a look at it?

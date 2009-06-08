@@ -1,4 +1,5 @@
-/*
+/* xor-analyze/xor-analyze.cc
+ *
  *  xor-analyze: XOR Cipher cryptanalysis program
  *  Copyright (C) 2000-2002 Thomas Habets <thomas@habets.pp.se>
  *
@@ -16,7 +17,6 @@
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
  *
- * $Id: xor-analyze.cc,v 1.12 2002/04/13 01:04:03 marvin Exp $
  */
 #include <stdio.h>
 #include <stdlib.h>
